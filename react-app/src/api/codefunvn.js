@@ -1,4 +1,3 @@
-import { getCookie , checkCookie , setCookie} from "./cookie";
 import $ from 'jquery'
 
 function login ( dt_username , dt_password )
@@ -21,5 +20,6 @@ function login ( dt_username , dt_password )
     })
     return return_data ;
 }
+
 
 export {login} ;

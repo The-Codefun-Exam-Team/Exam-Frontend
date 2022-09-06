@@ -7,7 +7,7 @@ function LogoutBtn()
     {
         if ( window.confirm('All current on page data won\'t be saved') )
         {
-            setCookie('auth',"",0)
+            setCookie('auth',"",0) ;
         }
     }
 

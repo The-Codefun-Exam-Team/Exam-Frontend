@@ -25,4 +25,24 @@ function Navigationbar()
     )
 }
 
-export default Navigationbar ;
+function EmptyNavigationbar()
+{
+
+    return (
+      <Navbar sticky="top" expand="lg" style={{backgroundColor:`${colors[4]}`}} variant="dark">
+        <Container>
+          <Navbar.Brand href="/" style={{color:`${colors[0]}`,fontSize:'xx-large'}}>Codefun Exam</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <NavbarBtn name="Problems" url="problems"/>
+              <NavbarBtn name="Submissions" url="submissions"/>
+              <LogoutBtn /> 
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    )
+}
+
+export {Navigationbar} ;

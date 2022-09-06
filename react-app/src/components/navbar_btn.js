@@ -1,7 +1,6 @@
 import colors from '../config/color.ts'
 import mystyles from '../config/styles.module.css'
 import Nav from 'react-bootstrap/Nav';
-import $ from 'jquery'
 
 function NavbarBtn(props)
 {
