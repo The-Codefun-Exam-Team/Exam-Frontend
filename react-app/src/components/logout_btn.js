@@ -11,7 +11,7 @@ function LogoutBtn()
         }
     }
 
-    return <NavbarBtn onClick={onClick} /> 
+    return <NavbarBtn onClick={onClick} name="Logout" url="login"/> 
 }
 
 export { LogoutBtn } ;
