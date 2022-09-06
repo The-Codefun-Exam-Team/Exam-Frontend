@@ -17,6 +17,7 @@ function Navigationbar()
             <Nav className="ms-auto">
               <NavbarBtn name="Problems" url="problems"/>
               <NavbarBtn name="Submissions" url="submissions"/>
+              <NavbarBtn name="About" url="about" />
               <LogoutBtn /> 
             </Nav>
           </Navbar.Collapse>
@@ -32,14 +33,6 @@ function EmptyNavigationbar()
       <Navbar sticky="top" expand="lg" style={{backgroundColor:`${colors[4]}`}} variant="dark">
         <Container>
           <Navbar.Brand href="/" style={{color:`${colors[0]}`,fontSize:'xx-large'}}>Codefun Exam</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <NavbarBtn name="Problems" url="problems"/>
-              <NavbarBtn name="Submissions" url="submissions"/>
-              <LogoutBtn /> 
-            </Nav>
-          </Navbar.Collapse>
         </Container>
       </Navbar>
     )

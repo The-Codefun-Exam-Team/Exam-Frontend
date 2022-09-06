@@ -16,12 +16,12 @@ function NavbarBtn(props)
         width:'fit-content',
         paddingTop: '0px',
         paddingBottom: '0px',
-        marginTop: '2px',
+        marginTop: '4px',
         marginBottom: '5px'
     };
 
 
-    return (<Nav.Link href={props.url} style={mystyle} className={`${mystyles.noselect} navbar-item`}>{props.name}</Nav.Link>) ;
+    return (<Nav.Link onClick={props.onClick} href={props.url} style={mystyle} className={`${mystyles.noselect} navbar-item`}>{props.name}</Nav.Link>) ;
 }
 
 export {NavbarBtn} ;
