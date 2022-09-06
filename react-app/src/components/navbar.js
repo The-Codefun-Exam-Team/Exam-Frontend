@@ -3,6 +3,7 @@ import colors from '../config/color.ts'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import { LogoutBtn } from "./logout_btn"; 
 
 function Navigationbar()
 {
@@ -16,7 +17,7 @@ function Navigationbar()
             <Nav className="ms-auto">
               <NavbarBtn name="Problems" url="problems"/>
               <NavbarBtn name="Submissions" url="submissions"/>
-              <NavbarBtn name="Logout" url="login"/>
+              <LogoutBtn /> 
             </Nav>
           </Navbar.Collapse>
         </Container>

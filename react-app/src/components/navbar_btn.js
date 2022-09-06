@@ -1,7 +1,7 @@
 import colors from '../config/color.ts'
 import mystyles from '../config/styles.module.css'
 import Nav from 'react-bootstrap/Nav';
-
+import $ from 'jquery'
 
 function NavbarBtn(props)
 {
@@ -20,6 +20,7 @@ function NavbarBtn(props)
         marginTop: '2px',
         marginBottom: '5px'
     };
+
 
     return (<Nav.Link href={props.url} style={mystyle} className={`${mystyles.noselect} navbar-item`}>{props.name}</Nav.Link>) ;
 }
