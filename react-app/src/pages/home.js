@@ -1,6 +1,6 @@
 import { Navigationbar } from "../components/navbar";
 
-function home()
+function HomePage()
 {
 
     return(
@@ -10,4 +10,4 @@ function home()
     )
 }
 
-export default home ;
+export default HomePage ;
