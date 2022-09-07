@@ -24,9 +24,6 @@ function Inputbox (props)
         paddingRight: '5px',
     }
 
-    useEffect(() => {
-        //Runs only on the first render
-      }, []);
 
     function focusinevent (event)
     {
