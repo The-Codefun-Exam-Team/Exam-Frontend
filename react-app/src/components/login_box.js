@@ -1,12 +1,18 @@
 import Card from 'react-bootstrap/Card';
 import colors from '../config/color.ts';
 import React from 'react';
-;
+import { login } from '../api/codefunvn';
+import { useSelector, useDispatch } from 'react-redux' ;
+import {update_password,update_username} from '../features/logindata.js'
+import {setCookie} from '../api/cookie.js'
+import { useEffect } from 'react';
 
-class Inputbox extends React.Component
+
+function Inputbox (props)
 {
+    const dispatch = useDispatch()
 
-    inputboxstyle = {
+    const inputboxstyle = {
         margin: '26px 30px 0px 30px',
         backgroundColor:'transparent',
         border: `${colors[3]} 0px solid`,
@@ -18,35 +24,53 @@ class Inputbox extends React.Component
         paddingRight: '5px',
     }
 
-    focusinevent = event =>
+    useEffect(() => {
+        //Runs only on the first render
+      }, []);
+
+    function focusinevent (event)
     {
         event.currentTarget.style.borderColor = `${colors[4]}`
         event.currentTarget.style.outline = `${colors[4]} solid 3.5px`
         
     }
     
-    focusoutevent = event =>
+    function focusoutevent (event)
     {
         event.currentTarget.style.borderColor = `${colors[3]}`
         event.currentTarget.style.outline = `${colors[3]} solid 2.5px`
     }
 
-
-    render() {
-        return(
-            <>
-                <input placeholder={this.props.placeholder} maxLength={this.props.maxlength} style={this.inputboxstyle} type={this.props.type} onFocus={this.focusinevent} onBlur={this.focusoutevent}/>
-            </>
-        )
-
+    function _onChange (event)
+    {
+        
+        if ( props.placeholder === 'Username:' )
+        {
+            dispatch(update_username(event.currentTarget.value))
+        }
+        else
+        {
+            dispatch(update_password(event.currentTarget.value))
+        }
     }
+
+    
+    return(
+        <>
+            <input placeholder={props.placeholder} onChange={_onChange} maxLength={props.maxlength} style={inputboxstyle} type={props.mytype} onFocus={focusinevent} onBlur={focusoutevent}/>
+        </>
+    )
+
+    
     
 
 }
 
-class SubmitBtn extends React.Component 
+function SubmitBtn (prop)
 {
-    submitbtnstyle = {
+    const username = useSelector((state)=>state.logindata.username.payload)
+    const password = useSelector((state)=>state.logindata.password.payload)
+    const submitbtnstyle = {
         padding: '3px 11px',
         margin: 'auto',
         marginTop: '17px',
@@ -58,21 +82,39 @@ class SubmitBtn extends React.Component
         backgroundColor: `${colors[3]}`
     }
 
-    _onFocus = event => 
+    
+    
+
+    function _onFocus (event) 
     {
         event.currentTarget.style.backgroundColor = `${colors[2]}` ;
     }    
 
-    _outFocus = event => 
+    function _outFocus (event) 
     {
         event.currentTarget.style.backgroundColor = `${colors[3]}` ;
     }
-    render ()
+
+    function _onClick () 
     {
-
-        return <input style={this.submitbtnstyle} type={'submit'} value='Login' onMouseDown={this._onFocus} onMouseOut={this._outFocus}  onMouseUp={this._outFocus}></input>
-
+        console.log(login(username,password))
+        var token = login(username,password)
+        if ( token === 'Fail')
+        {
+            alert('Wrong username or password')
+        }
+        else
+        {
+            setCookie('auth',token,7)
+            window.location = '/'
+        }
     }
+     
+    
+
+    return <input style={submitbtnstyle} type={'submit'} value='Login' onClick={_onClick} onMouseDown={_onFocus} onMouseLeave={_outFocus} onMouseUp={_outFocus} ></input>
+
+    
 }
 
 
@@ -127,8 +169,8 @@ function LoginBox ()
                 <Card.Title style={titlestyle}>Please login</Card.Title>
                 <Card.Subtitle style={subtitlestyle}>You should use codefun.vn account</Card.Subtitle>
             </div>
-            <Inputbox placeholder="Username:" type="text" maxlength={24}/>
-            <Inputbox placeholder="Password:" type="password" maxlength={64}/>
+            <Inputbox placeholder="Username:" mytype="text" maxlength={24}/>
+            <Inputbox placeholder="Password:" mytype="password" maxlength={64}/>
             <SubmitBtn/>
         </Card>
         

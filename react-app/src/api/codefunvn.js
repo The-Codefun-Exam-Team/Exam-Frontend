@@ -4,6 +4,7 @@ function login ( dt_username , dt_password )
 {
     var return_data = "Fail";
     $.ajax({
+        type:'POST',
         url: 'https://codefun.vn/api/auth',
         contentType: 'application/x-www-form-urlencoded; encode=gzip',
         data: {

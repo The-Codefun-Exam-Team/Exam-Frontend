@@ -8,13 +8,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import colors from './config/color.ts'
 import $ from 'jquery'
+import store from './features/store.js'
+import { Provider } from 'react-redux'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 $('body').css('background-color',colors[1]) ;

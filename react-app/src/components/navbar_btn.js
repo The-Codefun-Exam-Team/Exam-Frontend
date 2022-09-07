@@ -7,7 +7,7 @@ function NavbarBtn(props)
     const mystyle = {
         color: colors[0] ,
         backgroundColor: 'transparent' ,
-        fontSize: 'large',
+        fontSize: 'medium',
         fontWeight: '400',
         paddingLeft: '20px',
         borderLeft: `3px solid ${colors[0]}`,
@@ -16,12 +16,13 @@ function NavbarBtn(props)
         width:'fit-content',
         paddingTop: '0px',
         paddingBottom: '0px',
-        marginTop: '4px',
-        marginBottom: '5px'
+        marginTop: '8px',
+        marginBottom: '5px',
+        cursor: 'pointer',
     };
 
 
-    return (<Nav.Link onClick={props.onClick} href={props.url} style={mystyle} className={`${mystyles.noselect} navbar-item`}>{props.name}</Nav.Link>) ;
+    return (<Nav.Link onClick={props.onClick} href={props.url} style={mystyle} className={`${mystyles.noselect} navbar-item`} >{props.name}</Nav.Link>) ;
 }
 
 export {NavbarBtn} ;
