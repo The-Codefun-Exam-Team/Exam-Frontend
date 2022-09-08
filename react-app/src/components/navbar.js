@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { LogoutBtn } from "./logout_btn"; 
 import mystyles from "../config/styles.module.css"
+import { AccBtn } from './acc_btn'; 
 
 function Navigationbar()
 {
@@ -18,7 +19,8 @@ function Navigationbar()
             <Nav className="ms-auto">
               <NavbarBtn name="Problems" url="problems"/>
               <NavbarBtn name="Submissions" url="submissions"/>
-              <NavbarBtn name="About" url="about" />
+              <NavbarBtn name="About" url="about"/>
+              <AccBtn />
               <LogoutBtn /> 
             </Nav>
           </Navbar.Collapse>

@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { getCookie } from './cookie';
 
 function login ( dt_username , dt_password )
 {
@@ -23,4 +24,24 @@ function login ( dt_username , dt_password )
 }
 
 
-export {login} ;
+function verify ()
+{
+    var return_data = "Fail";
+    $.ajax({
+        type: 'POST',
+        url: 'https://codefun.vn/api/verify',
+        headers: {
+            Authorization: 'Bearer ' + getCookie('auth'),
+        },
+        contentType: 'application/x-www-form-urlencoded; encode=gzip',
+        async: false,
+        success: function(data,status)
+        {
+            console.log('Verify status: ' + status ) ;
+            return_data = data.data ;
+        }
+    })
+    return return_data ;
+}
+
+export {login,verify} ;

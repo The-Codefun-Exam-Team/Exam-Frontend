@@ -11,6 +11,7 @@ import $ from 'jquery'
 import store from './features/store.js'
 import { Provider } from 'react-redux'
 
+import { verify } from './api/codefunvn';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +23,10 @@ root.render(
 
 $('body').css('background-color',colors[1]) ;
 $('body').css('height','100%') ;
+
+console.log(verify())
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

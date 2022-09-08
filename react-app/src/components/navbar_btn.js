@@ -2,6 +2,7 @@ import colors from '../config/color.ts'
 import mystyles from '../config/styles.module.css'
 import Nav from 'react-bootstrap/Nav';
 
+
 function NavbarBtn(props)
 {
     const mystyle = {
@@ -22,7 +23,7 @@ function NavbarBtn(props)
     };
 
 
-    return (<Nav.Link onClick={props.onClick} href={props.url} style={mystyle} className={`${mystyles.noselect} navbar-item`} >{props.name}</Nav.Link>) ;
+    return (<Nav.Link onClick={props.onClick} href={props.url} target={props.target} style={mystyle} className={`${mystyles.noselect} navbar-item`} >{props.name}</Nav.Link>) ;
 }
 
 export {NavbarBtn} ;
