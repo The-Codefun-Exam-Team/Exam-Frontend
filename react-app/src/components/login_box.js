@@ -5,7 +5,6 @@ import { login } from '../api/codefunvn';
 import { useSelector, useDispatch } from 'react-redux' ;
 import {update_password,update_username} from '../features/logindata.js'
 import {setCookie} from '../api/cookie.js'
-import { useEffect } from 'react';
 
 
 function Inputbox (props)
