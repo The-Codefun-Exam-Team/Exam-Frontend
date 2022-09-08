@@ -10,7 +10,6 @@ import colors from './config/color.ts'
 import $ from 'jquery'
 import store from './features/store.js'
 import { Provider } from 'react-redux'
-
 import { verify } from './api/codefunvn';
 
 
@@ -24,7 +23,6 @@ root.render(
 $('body').css('background-color',colors[1]) ;
 $('body').css('height','100%') ;
 
-console.log(verify())
 
 
 
