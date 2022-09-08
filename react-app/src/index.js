@@ -10,7 +10,6 @@ import colors from './config/color.ts'
 import $ from 'jquery'
 import store from './features/store.js'
 import { Provider } from 'react-redux'
-import { verify } from './api/codefunvn';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
