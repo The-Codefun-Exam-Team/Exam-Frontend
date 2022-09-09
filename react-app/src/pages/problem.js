@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import { FunctionBar } from "../components/functionbar";
 import { useParams } from "react-router-dom";
 import { getDebugProblem } from "../api/codefundebug";
-import { useEffect } from "react";
 
 function ProblemPage()
 {

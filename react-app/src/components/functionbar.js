@@ -1,6 +1,4 @@
 import colors from '../config/color.ts'
-import { useParams } from "react-router-dom";
-import { getDebugProblem } from '../api/codefundebug';
 import { useSelector } from 'react-redux'
 import { editDistance } from '../features/editdistance';
 import { cpp_format } from '../features/cpp_format';

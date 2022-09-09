@@ -1,11 +1,8 @@
 import ReactAce from 'react-ace'
-import { getDebugProblem } from '../api/codefundebug';
-import { useParams } from 'react-router-dom';
 import colors from '../config/color.ts'
 import { update_realcode , update_usercode } from '../features/codedata.js';
 import { useDispatch } from 'react-redux';
 import { cpp_format } from '../features/cpp_format';
-import { useState } from 'react';
 import { useRef } from 'react';
 
 import "ace-builds/src-noconflict/mode-python";
