@@ -31,14 +31,15 @@ function InfoBtn (props)
     const mystyle = {
         marginBottom: '30px',
         color: 'white',
-        backgroundColor: `${colors[3]}`,
+        backgroundColor: `${colors[4]}`,
         borderRadius: '4px',
-        border: `2px solid ${colors[4]}`,
+        border: `2px solid ${colors[5]}`,
         float: `${props.float}`,
         marginRight: `${marginright()}`,
         marginLeft: `${marginleft()}`,
         fontSize: 'larger',
         marginTop: '10px',
+        padding: '3px 8px'
     }   
 
     return <button onClick={props.onClick} style={mystyle} disabled={props.disabled} >{props.name}</button>
