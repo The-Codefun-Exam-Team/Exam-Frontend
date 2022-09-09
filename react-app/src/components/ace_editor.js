@@ -3,8 +3,10 @@ import { getDebugProblem } from '../api/codefundebug';
 import { useParams } from 'react-router-dom';
 import colors from '../config/color.ts'
 import { update_realcode , update_usercode } from '../features/codedata.js';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { cpp_format } from '../features/cpp_format';
+import { useState } from 'react';
+import { useRef } from 'react';
 
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -26,11 +28,19 @@ function CodeTitle (props)
 }
 
 
-function UserEditor()
+function UserEditor(props)
 {
-    const {debugProblemId} = useParams()
-    const codeToDebug = getDebugProblem(debugProblemId).code
-    update_usercode(codeToDebug)
+    const dispatch = useDispatch();
+    
+    const codeToDebug = props.data.code
+    const timerRef = useRef() ;
+    dispatch(update_usercode(codeToDebug))
+    function _onChange (code)
+    {
+        clearTimeout(timerRef.current)
+        timerRef.current = setTimeout(()=>dispatch(update_usercode(code)),500)
+        
+    }
 
     const mystyle = {
         width: '90%%' ,
@@ -48,17 +58,17 @@ function UserEditor()
             style={mystyle}
             value={codeToDebug}
             fontSize='16px'
+            onChange={_onChange}
         />
     </>
     )
 }
 
-function ConstantEditor()
+function ConstantEditor(props)
 {
     const dispatch = useDispatch()
-    const {debugProblemId} = useParams()
-    const codeToDebug = getDebugProblem(debugProblemId).code
-    dispatch(update_realcode(codeToDebug))
+    const codeToDebug = props.data.code
+    dispatch(update_realcode(cpp_format(codeToDebug)))
 
 
     const mystyle = {

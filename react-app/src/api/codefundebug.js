@@ -10,7 +10,7 @@ function getDebugProblem (debugProblemId)
         async: false ,
         success(data,status){
             console.log('Get problem infor status: ' + status ) ;
-            return_data = JSON.parse(data).data;
+            return_data = data.data;
         }
     })
     return return_data ;

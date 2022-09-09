@@ -13,7 +13,6 @@ export const codeSlice = createSlice({
         },
         update_realcode: (state,n_realcode) => {
             state.realcode = n_realcode
-            console.log(1)
         },
     },
 

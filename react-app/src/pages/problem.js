@@ -4,7 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { FunctionBar } from "../components/functionbar";
-
+import { useParams } from "react-router-dom";
+import { getDebugProblem } from "../api/codefundebug";
+import { useEffect } from "react";
 
 function ProblemPage()
 {
@@ -12,25 +14,28 @@ function ProblemPage()
         marginTop: '20px'
     }
 
-    
+    const {debugProblemId} = useParams()
+    const debugProblemData = getDebugProblem(debugProblemId)
 
     
 
     return (
+
+
         <>
             <Navigationbar /> 
             <Container fluid style={mystyle}>
                 <Row>
                     <Col md>
-                        <FunctionBar />
+                        <FunctionBar data={debugProblemData}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col md>
-                        <UserEditor />
+                        <UserEditor data={debugProblemData}/>
                     </Col>
                     <Col md>
-                        <ConstantEditor /> 
+                        <ConstantEditor data={debugProblemData}/> 
                     </Col>
                 </Row>
             </Container>
