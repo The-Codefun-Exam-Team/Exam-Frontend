@@ -13,7 +13,7 @@ function Navigationbar()
     return (
       <Navbar sticky="top" expand="lg" style={{backgroundColor:`${colors[4]}`}} variant="dark">
         <Container>
-          <Navbar.Brand href="/" style={{color:`${colors[0]}`,fontSize:'xx-large'}}>Codefun Exam</Navbar.Brand>
+          <Navbar.Brand href="/" style={{color:`${colors[0]}`,fontSize:'xx-large'}}>Codefun Debug</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">

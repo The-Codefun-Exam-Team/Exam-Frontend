@@ -35,7 +35,7 @@ function verify ()
         },
         contentType: 'application/x-www-form-urlencoded; encode=gzip',
         async: false,
-        success: function(data,status)
+        success: function(data,status,xhr)
         {
             console.log('Verify status: ' + status ) ;
             return_data = data.data ;
