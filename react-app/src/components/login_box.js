@@ -62,11 +62,11 @@ function Inputbox (props)
 
 }
 
-function SubmitBtn (prop)
+function LoginBtn (prop)
 {
     const username = useSelector((state)=>state.logindata.username.payload)
     const password = useSelector((state)=>state.logindata.password.payload)
-    const submitbtnstyle = {
+    const loginbtnstyle = {
         padding: '3px 11px',
         margin: 'auto',
         marginTop: '17px',
@@ -108,7 +108,7 @@ function SubmitBtn (prop)
      
     
 
-    return <input style={submitbtnstyle} type={'submit'} value='Login' onClick={_onClick} onMouseDown={_onFocus} onMouseLeave={_outFocus} onMouseUp={_outFocus} ></input>
+    return <input style={loginbtnstyle} type={'submit'} value='Login' onClick={_onClick} onMouseDown={_onFocus} onMouseLeave={_outFocus} onMouseUp={_outFocus} ></input>
 
     
 }
@@ -167,7 +167,7 @@ function LoginBox ()
             </div>
             <Inputbox placeholder="Username:" mytype="text" maxlength={24}/>
             <Inputbox placeholder="Password:" mytype="password" maxlength={64}/>
-            <SubmitBtn/>
+            <LoginBtn/>
         </Card>
         
     </>)
