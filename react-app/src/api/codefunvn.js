@@ -1,10 +1,10 @@
 import $ from 'jquery'
-import { getCookie } from './cookie';
+import { getCookie , setCookie} from './cookie';
 
 function login ( dt_username , dt_password )
 {
-    var return_data = "Fail";
-    $.ajax({
+    
+    return  $.ajax({
         type:'POST',
         url: 'https://codefun.vn/api/auth',
         contentType: 'application/x-www-form-urlencoded; encode=gzip',
@@ -12,36 +12,45 @@ function login ( dt_username , dt_password )
             username: dt_username,
             password: dt_password,
         },
-        async: false,
         success: function(data,status)
         {
-            return_data = data.data ;
             console.log('Login status: ' + status)
-        }
+            setCookie('auth',data.data,7)
+            window.location = '/'
+        },
+        error: function()
+        {
+            alert("Login unsuccessfully")
+            
+        },
+        timeout: 5000
 
     })
-    return return_data ;
 }
 
 
 function verify ()
 {
-    var return_data = "Fail";
-    $.ajax({
+    return $.ajax({
         type: 'POST',
         url: 'https://codefun.vn/api/verify',
         headers: {
             Authorization: 'Bearer ' + getCookie('auth'),
         },
         contentType: 'application/x-www-form-urlencoded; encode=gzip',
-        async: false,
-        success: function(data,status,xhr)
+        success: function(data,status)
         {
             console.log('Verify status: ' + status ) ;
-            return_data = data.data ;
-        }
+            
+        },
+        error: function()
+        {
+            alert("Token fail, please login again.")
+            window.location = '/login'
+        },
+        timeout: 5000
     })
-    return return_data ;
+    
 }
 
 export {login,verify} ;

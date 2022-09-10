@@ -48,7 +48,7 @@ function InfoBtn (props)
 
 
 function FunctionBar (props)
-{
+{ 
     const problemId = props.data.problem.code
     const url = 'https://codefun.vn/problems/' + problemId;
     const usercode = useSelector((state)=>state.codedata.usercode.payload)

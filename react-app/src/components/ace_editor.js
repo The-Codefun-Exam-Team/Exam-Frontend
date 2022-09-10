@@ -29,9 +29,9 @@ function CodeTitle (props)
 function UserEditor(props)
 {
     const dispatch = useDispatch();
+    const timerRef = useRef() ;
     
     const codeToDebug = props.data.code
-    const timerRef = useRef() ;
     dispatch(update_usercode(codeToDebug))
     function _onChange (code)
     {

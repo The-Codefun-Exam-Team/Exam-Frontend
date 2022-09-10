@@ -13,6 +13,7 @@ function App() {
           <Route path='login' element={<LoginPage />} />
           <Route path='contest/:contestId' element={<ContestPage />} />
           <Route path='problem/:debugProblemId' element={<ProblemPage />} /> 
+          
         </Route>
 
       </Routes>

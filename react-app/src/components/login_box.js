@@ -4,7 +4,6 @@ import React from 'react';
 import { login } from '../api/codefunvn';
 import { useSelector, useDispatch } from 'react-redux' ;
 import {update_password,update_username} from '../features/logindata.js'
-import {setCookie} from '../api/cookie.js'
 
 
 function Inputbox (props)
@@ -93,17 +92,7 @@ function LoginBtn (prop)
 
     function _onClick () 
     {
-        console.log(login(username,password))
-        var token = login(username,password)
-        if ( token === 'Fail')
-        {
-            alert('Wrong username or password')
-        }
-        else
-        {
-            setCookie('auth',token,7)
-            window.location = '/'
-        }
+        login(username,password)
     }
      
     
