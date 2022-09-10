@@ -10,7 +10,9 @@ function SubmitBtn (props)
         color: `${colors[0]}`,
         borderRadius: '5px',
         fontSize: 'larger',
-        padding: '3px 10px'
+        padding: '3px 10px',
+        border: `${colors[5]} 2px solid`,
+        outline: '0px solid black'
 
 
     }
