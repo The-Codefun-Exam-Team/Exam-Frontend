@@ -18,7 +18,8 @@ function CodeTitle (props)
         textAlign: 'center',
         fontSize: 'larger',
         padding: '8px',
-        borderBottom: `${colors[0]} 2px solid`
+        borderBottom: `${colors[0]} 2px solid`,
+        marginTop: '5px',
     }
 
     return <div style={mystyle}>{props.content}</div>
