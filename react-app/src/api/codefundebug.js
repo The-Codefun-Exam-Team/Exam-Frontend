@@ -5,7 +5,7 @@ function getDebugProblem (debugProblemId)
     var return_data = 'Fail' ;
     $.ajax({
         type: 'GET',
-        url: 'http://bugsad.ddns.net/debug_problem',
+        url: 'http://bugsad.ddns.net/api/debug_problem',
         async: false ,
         success(data,status){
             console.log('Get problem infor status: ' + status ) ;
@@ -22,7 +22,7 @@ function getSubmission (submissionId)
     var return_data = 'Fail' ;
     $.ajax({
         type: 'GET',
-        url: 'http://bugsad.ddns.net/debug_submission/' + submissionId,
+        url: 'http://bugsad.ddns.net/api/debug_submission/' + submissionId,
         async: false,
         success(data,status){
             console.log('Get submission infor status: ' + status ) ;
