@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Navigationbar } from "../components/navbar";
 import { useEffect } from "react";
+import { ProblemLs } from "../components/prob_ls";
 
 function ContestPage ()
 {
@@ -12,7 +13,7 @@ function ContestPage ()
     
     return (<>
         <Navigationbar />
-         
+        <ProblemLs />
     </>)
 
 }
