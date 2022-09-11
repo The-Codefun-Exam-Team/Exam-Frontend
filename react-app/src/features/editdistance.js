@@ -1,5 +1,9 @@
+import { cpp_format } from "./cpp_format"
+
 function editDistance ( usercode , realcode )
 {
+    usercode = cpp_format(usercode)
+    realcode = cpp_format(realcode)
     usercode = '#' + usercode
     realcode = '#' + realcode
     var dp = Array(realcode.length)

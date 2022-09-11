@@ -1,6 +1,6 @@
 export const allLineComment = new RegExp(/\/\*.+?\*\//,'sg');
 export const oneLineComment = new RegExp(/\/\/.+?\n/,'sg')
-export const spacing = new RegExp(/[\n|\t| |\u2028|\u2029]/,'g')
+export const spacing = new RegExp(/[\n|\t| |\u2028|\u2029|\r]/,'g')
 
 function removeComment(code)
 {

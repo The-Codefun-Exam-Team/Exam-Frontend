@@ -5,11 +5,11 @@ function getDebugProblem (debugProblemId)
     var return_data = 'Fail' ;
     $.ajax({
         type: 'GET',
-        url: 'http://bugsad.ddns.net/api/debug_problem',
+        url: 'http://bugsad.ddns.net/api/problems/' + debugProblemId,
         async: false ,
         success(data,status){
             console.log('Get problem infor status: ' + status ) ;
-            return_data = data.data;
+            return_data = data;
         },
 
         timeout: 5000
