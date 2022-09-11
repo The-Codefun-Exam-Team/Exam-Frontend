@@ -4,6 +4,7 @@ import ContestPage from './pages/contest';
 import ProblemPage from './pages/problem';
 import SubmissionPage from './pages/submission'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AboutPage } from './pages/about';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           <Route path='contest/:contestId' element={<ContestPage />} />
           <Route path='problem/:debugProblemId' element={<ProblemPage />} /> 
           <Route path='submission/:debugSubmissionId' element={<SubmissionPage />} />
+          <Route path='about' element={<AboutPage />} />
+
         </Route>
 
       </Routes>

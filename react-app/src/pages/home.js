@@ -1,5 +1,5 @@
 import { Navigationbar } from "../components/navbar";
-import { BetaNote } from "../features/homecontent";
+import { BetaNote } from "../components/homecontent";
 
 function HomePage()
 {

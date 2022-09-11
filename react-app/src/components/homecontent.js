@@ -6,7 +6,7 @@ function BetaNote()
         width: '50%',
         backgroundColor: `${colors[3]}`,
         color: `${colors[0]}`,
-        marginTop: '58px',
+        marginTop: '150px',
         padding: '20px',
         border: `${colors[4]} 3px solid`,
         borderRadius: '5px',
@@ -21,7 +21,7 @@ function BetaNote()
     return <>
         <div>
             <div className="mx-auto" style={mystyle}>
-                <h3>Beta version notes</h3>
+                <h3 style={{marginBottom:'20px'}}>Beta version notes</h3>
                 <ul style={contentstyle}>
                     <li>This is beta version of the website. If deployed successfully, we will continue with it.</li>
                     <li>To start with, you have to click the "problems" button on the navigation bar to continue.</li>

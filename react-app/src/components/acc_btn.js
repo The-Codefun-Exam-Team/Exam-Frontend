@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 function AccBtn(props)
 {
-    const [verifydata,setverifydata] = useState(0)
+    const [verifydata,setverifydata] = useState("Username")
     useEffect(()=>{
         verify().done(function(response){setverifydata(response.data)})
     },[])
