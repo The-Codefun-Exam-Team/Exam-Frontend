@@ -22,10 +22,11 @@ function SubmitBtn (props)
 
     const {problemId} = useParams()
     const code = useSelector((state)=>state.codedata.usercode.payload)
+    console.log(problemId)
 
     function _onClick ()
     {
-        console.log("Submitting")
+        console.log(problemId)
         submitDebug(code,problemId).done(function(response,status){
             if ( status === 'success' )
             {

@@ -38,10 +38,14 @@ function submitDebug (code,problemId)
 {
     return $.ajax({
         type: 'POST',
-        url: '',
+        url: 'https://debug.codefun.vn/api/submit/',
         timeout: 5000,
         headers: {
             Authorization: 'Bearer ' + getCookie('auth'),
+        },
+        data: {
+            problem: problemId,
+            code: JSON.stringify(code),
         }
     })
 }
