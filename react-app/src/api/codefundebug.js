@@ -23,8 +23,11 @@ function getSubmission (submissionId)
     var return_data = 'Fail' ;
     $.ajax({
         type: 'GET',
-        url: 'https://debug.codefun.vn/api/debug_submission/' + submissionId,
+        url: 'https://debug.codefun.vn/api/submission/' + submissionId,
         async: false,
+        headers: {
+            Authorization: 'Bearer ' + getCookie('auth'),  
+        },
         success(data,status){
             console.log('Get submission infor status: ' + status ) ;
             return_data = data;
@@ -42,12 +45,17 @@ function submitDebug (code,problemId)
         timeout: 5000,
         headers: {
             Authorization: 'Bearer ' + getCookie('auth'),
+            accept: 'application/json',
         },
-        contentType: 'application/x-www-form-urlencoded; encode=gzip',
-        
+        contentType: 'application/x-www-form-urlencoded',
         data: {
             problem: problemId,
-            code: JSON.stringify(code),
+            code: code,
+        },
+        success: function(data,status)
+        {
+            console.log(data)
+            console.log("Submit status: " + status)
         }
     })
 }

@@ -18,9 +18,11 @@ function SubInfo()
 
 
     const {debugSubmissionId} = useParams()
+    console.log(debugSubmissionId)
     const [data,resetdata] = useState(getSubmission(debugSubmissionId))
     if ( data.edit_result === 'Q' )
     {
+        
         setTimeout(()=>resetdata(getSubmission(debugSubmissionId)),5000)
         
     }
@@ -61,8 +63,8 @@ function SubInfo()
             </thead>
             <tbody >
                 <tr>
-                    <td>Debug problem id:</td>
-                    <td><a href={`/problem/${1}`}>Link to problem</a></td>
+                    <td>Debug problem:</td>
+                    <td><a href={`/problem/${data.debug_problem_code}`}>{data.debug_problem_code}</a></td>
                 </tr>
                 <tr>
                     <td>Run id:</td>

@@ -20,17 +20,18 @@ function SubmitBtn (props)
 
     }
 
-    const {problemId} = useParams()
+    const {debugProblemId} = useParams()
     const code = useSelector((state)=>state.codedata.usercode.payload)
-    console.log(problemId)
+    console.log(debugProblemId)
 
     function _onClick ()
     {
-        console.log(problemId)
-        submitDebug(code,problemId).done(function(response,status){
-            if ( status === 'success' )
+        console.log(debugProblemId)
+        submitDebug(code,debugProblemId).done(function(response,status){
+            
+            if ( response.id !== undefined )
             {
-                window.location = '/submission/' + response
+                window.location = '/submission/' + response.id
             }
             else
             {
