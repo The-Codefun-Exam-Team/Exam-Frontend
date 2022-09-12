@@ -43,6 +43,8 @@ function submitDebug (code,problemId)
         headers: {
             Authorization: 'Bearer ' + getCookie('auth'),
         },
+        contentType: 'application/x-www-form-urlencoded; encode=gzip',
+        
         data: {
             problem: problemId,
             code: JSON.stringify(code),
