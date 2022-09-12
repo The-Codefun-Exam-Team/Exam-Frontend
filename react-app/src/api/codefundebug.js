@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { getCookie } from './cookie';
 
 function getDebugProblem (debugProblemId)
 {
@@ -33,4 +34,16 @@ function getSubmission (submissionId)
     return return_data ;
 }
 
-export {getDebugProblem,getSubmission} ;
+function submitDebug (code,problemId)
+{
+    return $.ajax({
+        type: 'POST',
+        url: '',
+        timeout: 5000,
+        headers: {
+            Authorization: 'Bearer ' + getCookie('auth'),
+        }
+    })
+}
+
+export {getDebugProblem,getSubmission,submitDebug} ;

@@ -24,7 +24,7 @@ function AboutNote()
                 <h3  style={{marginBottom:'20px'}}>About us, the developers.</h3>
                 <ul style={contentstyle}>
                     <li>First of all, this website is based on <a target='_blank' rel='noreferrer' href='https://codefun.vn' style={{color:'white'}}>Codefun</a> website of Natsu Kagami,
-                    so big thank to him for helping us a lot.</li>
+                    so big thanks to him for helping us a lot.</li>
                     <li>The idea belongs to Teacher Ho Dac Phuong, who gathered us and "initialize" this project.</li>
                     <li>About the rest of us, we're from HSGS2K6 including:
                         <ul>

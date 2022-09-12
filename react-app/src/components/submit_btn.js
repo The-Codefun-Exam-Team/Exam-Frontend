@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { submitDebug } from '../api/codefundebug'
 import colors from '../config/color.ts'
 
 function SubmitBtn (props)
@@ -17,8 +20,26 @@ function SubmitBtn (props)
 
     }
 
+    const {problemId} = useParams()
+    const code = useSelector((state)=>state.codedata.usercode.payload)
+
+    function _onClick ()
+    {
+        console.log("Submitting")
+        submitDebug(code,problemId).done(function(response,status){
+            if ( status === 'success' )
+            {
+                window.location = '/submission/' + response
+            }
+            else
+            {
+                alert('Submit fail, please wait 1\'30\'\' to submit again or check your connection')
+            }
+        })
+    }
+
     return (<>
-        <button style={mystyle}>Submit</button>
+        <button onClick={_onClick} style={mystyle}>Submit</button>
     </>)
 }
 
