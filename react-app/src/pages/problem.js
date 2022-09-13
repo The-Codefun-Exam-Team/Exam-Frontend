@@ -7,7 +7,6 @@ import { FunctionBar } from "../components/functionbar";
 import { useParams } from "react-router-dom";
 import { getDebugProblem } from "../api/codefundebug";
 import { SubmitBtn } from "../components/submit_btn.js"
-import { useEffect } from "react";
 
 function ProblemPage()
 {
