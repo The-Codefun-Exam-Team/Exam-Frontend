@@ -35,10 +35,10 @@ function ProblemPage()
                 </Row>
                 <Row>
                     <Col md>
-                        <UserEditor data={debugProblemData}/>
+                        <ConstantEditor data={debugProblemData}/>
                     </Col>
                     <Col md>
-                        <ConstantEditor data={debugProblemData}/> 
+                        <UserEditor data={debugProblemData}/> 
                     </Col>
                 </Row>
                 <Row>
