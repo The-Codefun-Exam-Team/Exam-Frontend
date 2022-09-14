@@ -45,7 +45,7 @@ function verify ()
         },
         error: function()
         {
-            alert("Token fail, please login again.")
+            alert("No token found, please login to continue.")
             window.location = '/login'
         },
         timeout: 5000
