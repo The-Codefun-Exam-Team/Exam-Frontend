@@ -18,16 +18,12 @@ function ContestPage ()
         <Navigationbar />
         <Container>
             <Row>
-                <Col className="col-md-6">
-                    <div >
-                        <ProblemLs startidx={1}/>
+                <Col>
+                    <div>
+                        <ProblemLs startidx={17}/>
                     </div>
                 </Col>
-                <Col className="col-md-6">
-                    <div >
-                        <ProblemLs startidx={9}/>
-                    </div>
-                </Col>
+
             </Row>
         </Container>
     </>)
