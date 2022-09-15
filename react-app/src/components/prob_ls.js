@@ -29,7 +29,7 @@ function ProblemLs(props)
         arr.push(<tr key={i} ><th style={{textAlign: 'center',borderRight:`2px ${colors[3]} solid`}}>{probid(i)}</th><th style={{textAlign: 'center'}} ><a  href={`/problem/${probid(i)}`}>Link to problem</a></th></tr>)
 
     }
-    arr.push(<tr key={props.startidx+props.len-1}><th  style={{textAlign: 'center',borderRight:`2px ${colors[3]} solid`,borderBottom:'0px solid red'}}>{`${probid(props.startidx+props.len-1)}`}</th><th style={{textAlign: 'center',borderBottom:'0px solid red'}} ><a  href={`/problem/${probid(props.startidx+6)} `}>Link to problem</a></th></tr>)
+    arr.push(<tr key={props.startidx+props.len-1}><th  style={{textAlign: 'center',borderRight:`2px ${colors[3]} solid`,borderBottom:'0px solid red'}}>{`${probid(props.startidx+props.len-1)}`}</th><th style={{textAlign: 'center',borderBottom:'0px solid red'}} ><a  href={`/problem/${probid(props.startidx+props.len-1)} `}>Link to problem</a></th></tr>)
 
     // for ( let i = 1 ; i < 10 ; i ++ )
     // {

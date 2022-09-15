@@ -20,12 +20,12 @@ function ContestPage ()
             <Row>
                 <Col className="col-md-6">
                     <div >
-                        <ProblemLs startidx={1} len={8}/>
+                        <ProblemLs startidx={1} len={11}/>
                     </div>
                 </Col>
                 <Col className="col-md-6">
                     <div >
-                        <ProblemLs startidx={9} len={8}/>
+                        <ProblemLs startidx={12} len={11}/>
                     </div>
                 </Col>
             </Row>
