@@ -6,7 +6,7 @@ function removeComment(code)
 {
     var ncode = code.replaceAll(allLineComment,"")
     var nncode = ncode.replaceAll(oneLineComment,"")
-    return nncode
+    return code
 }
 
 function removeSpacing(code)
