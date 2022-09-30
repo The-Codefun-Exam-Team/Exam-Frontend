@@ -19,7 +19,7 @@ function CodeTitle (props)
         fontSize: 'larger',
         padding: '8px',
         borderBottom: `${colors[0]} 2px solid`,
-        marginTop: '30px',
+        marginTop: '25px',
         borderRadius: '5px 5px 0px 0px',
         display: 'block'
     }
@@ -35,7 +35,7 @@ function UserEditor(props)
     
     const codeToDebug = props.data.code
     dispatch(update_usercode(codeToDebug))
-    dispatch(update_realcode(cpp_format(codeToDebug)))
+    dispatch(update_realcode(codeToDebug))
     function _onChange (code)
     {
         clearTimeout(timerRef.current)

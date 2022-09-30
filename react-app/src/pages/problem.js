@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import { FunctionBar, ProblemInfoTable } from "../components/functionbar";
 import { useParams } from "react-router-dom";
 import { getDebugProblem } from "../api/codefundebug";
-import { SubmitBtn } from "../components/submit_btn.js"
 
 function ProblemPage()
 {
@@ -30,7 +29,7 @@ function ProblemPage()
                 
                 <Row>
                     <Col md={4}>
-                        <ProblemInfoTable />
+                        <ProblemInfoTable data={debugProblemData} />
                     </Col>
                     <Col md={8}>
                         <FunctionBar data={debugProblemData} />

@@ -5,6 +5,9 @@ import { cpp_format } from '../features/cpp_format';
 import Table from "react-bootstrap/esm/Table"
 import { useParams } from 'react-router-dom';
 import { submitDebug } from '../api/codefundebug';
+import clipboardimg from '../clipboard.png';
+import smileimg from '../smile.png'
+import { useEffect, useMemo, useState } from 'react';
 
 function InfoBtn (props)
 {
@@ -17,20 +20,91 @@ function InfoBtn (props)
         border: `2px solid ${colors[5]}`,
         float: `${props.float}`,
         marginRight: '22px',
-        fontSize: '25px',
+        fontSize: '21px',
         marginTop: '15px',
-        padding: '3px 8px',
+        padding: '1px 8px',
     }   
 
     return <div className={`${props.className}`}><button onClick={props.onClick}  style={mystyle} disabled={props.disabled} >{props.name}</button></div>
+}
+
+function ClipboardButton ()
+{
+    // const pictures = useMemo(()=>{return [smileimg,clipboardimg]},[])
+    // pictures.forEach((picture) => {
+    //     const img = new Image();
+    //     img.src = picture;
+    // });
+    const realcode = useSelector((state)=>state.codedata.realcode.payload)
+    const [copying,update] = useState(false)
+    useEffect(()=>{
+        if ( copying )
+        {
+            setTimeout(()=>update(false),1000)
+        }
+    },[copying])
+    function icon ()
+    {
+        if ( copying )
+        {
+            return smileimg
+        }
+        else
+        {
+            return clipboardimg
+        }
+    }
+    function sz ()
+    {
+        if ( copying )
+        {
+            return '95%'
+        }
+        else
+        {
+            return '70%'
+        }
+    }
+    const clipstyle = {
+        backgroundImage: 'url('+icon()+')',
+        backgroundRepeat: 'no-repeat',
+        overflow: 'hidden',
+        backgroundColor: 'transparent',
+        border: '0px solid red',
+        backgroundSize: `${sz()}`,
+        backgroundPosition: '55%',
+        width: '40px',
+        height: '33px',
+        padding: '0px',
+        position: 'relative',
+        margin: 'auto',
+        cursor: 'pointer',
+
+
+    }
+
+
+    function __onClick ()
+    {
+        if ( !copying ) 
+        {
+            
+              
+            navigator.clipboard.writeText(realcode).then(setTimeout(()=>update(true),20))
+
+        }
+
+    }
+    return <div style={clipstyle} onClick={__onClick}>
+        
+    </div>
 }
 
 
 
 function FunctionBar (props)
 { 
-    const problemId = props.data.problem.code
-    const url = 'https://codefun.vn/problems/' + problemId;
+
     const usercode = useSelector((state)=>state.codedata.usercode.payload)
     const realcode = useSelector((state)=>state.codedata.realcode.payload)
     const {debugProblemId} = useParams()
@@ -59,6 +133,18 @@ function FunctionBar (props)
     </div>
 }
 
+function BugDisplay ()
+{
+
+    const mystyle = {
+        margin: '0px',
+    }
+    return <ul style={mystyle}>
+        <li>WA: x2</li>
+        <li>RTE: x1</li>
+    </ul>
+}
+
 function ProblemInfoTable(props)
 {
     const tableStyle = {
@@ -82,6 +168,11 @@ function ProblemInfoTable(props)
 
     }
 
+    const {debugProblemId} = useParams()
+    const problemId = props.data.problem.code
+    const url = 'https://codefun.vn/problems/' + problemId;
+
+    
     
     return <>
 
@@ -89,25 +180,29 @@ function ProblemInfoTable(props)
         <Table style={tableStyle} borderless={true}>
             <thead>
                 <tr>
-                    <th colSpan={2}><div style={scoreStyle}>Score: 100</div></th>
+                    <th colSpan={2}><div style={scoreStyle}>Highest score: {props.data.score}</div></th>
                 </tr>
             </thead>
             <tbody style={{backgroundColor:`${colors[4]}`}}>
                 <tr>
-                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`,borderTop:`${colors[5]} solid 2px`}}>asjldf</th>
-                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderTop:`${colors[5]} solid 2px`}}>fjdsklf</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`,borderTop:`${colors[5]} solid 2px`}}>Problem</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderTop:`${colors[5]} solid 2px`}}>{debugProblemId}</th>
                 </tr>
                 <tr>
-                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`}}>asjldf</th>
-                    <th style={{borderBottom:`${colors[5]} solid 2px`}}>fjdsklf</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`}}>Statement</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`}}><a href={url} target='_blank' rel='noreferrer'>{problemId}</a></th>
                 </tr>
                 <tr>
-                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`}}>asjldf</th>
-                    <th style={{borderBottom:`${colors[5]} solid 2px`}}>fjdsklf</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`}}>Code to debug</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`}}><ClipboardButton /></th>
                 </tr>
                 <tr>
-                    <th style={{borderBottom: '0px red solid',borderRight:`${colors[5]} solid 2px`}}>asjldf</th>
-                    <th style={{borderBottom: '0px red solid',outlineRight:`${colors[5]} solid 2px`,outlineLeft:`${colors[5]} solid 2px`}}>fjdsklf</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`,borderRight:`${colors[5]} solid 2px`}}>Language</th>
+                    <th style={{borderBottom:`${colors[5]} solid 2px`}}>{props.data.language}</th>
+                </tr>
+                <tr>
+                    <th style={{borderBottom: '0px red solid',borderRight:`${colors[5]} solid 2px`}}>Bugs</th>
+                    <th style={{borderBottom: '0px red solid',outlineRight:`${colors[5]} solid 2px`,outlineLeft:`${colors[5]} solid 2px`}}><BugDisplay /></th>
                 </tr>
             </tbody>
         </Table>
