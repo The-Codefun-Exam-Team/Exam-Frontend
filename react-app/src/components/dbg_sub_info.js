@@ -70,13 +70,9 @@ function SubInfo()
                     <td>Run id:</td>
                     <td><a target='_blank' rel='noreferrer' href={`https://codefun.vn/submissions/${data.codefun_id}`}>{data.codefun_id}</a></td>
                 </tr>
-                <tr>
-                    <td>Debug verdict:</td>
-                    <td>{getVerdict()}</td>
-                </tr>
                 <tr style={{borderBottom: '0px red solid'}}>
                     <td style={{borderBottom: '0px red solid'}}>Debug score:</td>
-                    <td style={{borderBottom: '0px red solid'}}>100</td>
+                    <td style={{borderBottom: '0px red solid'}}>{data.edit_score}</td>
                 </tr>
             </tbody>
 

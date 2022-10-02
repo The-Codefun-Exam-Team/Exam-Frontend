@@ -128,7 +128,7 @@ function FunctionBar (props)
     return <div style={{height:'auto'}} className='d-flex flex-row'>
 
         <InfoBtn disabled={true} name={`Difference: ${editDistance(cpp_format(usercode),realcode)}`} />
-        <InfoBtn disabled={true} name={'Expected score: 100'} />
+        {/* <InfoBtn disabled={true} name={'Expected score: 100'} /> */}
         <InfoBtn disabled={false} className='ms-auto' name={'Submit'} onClick={_onClick} />
     </div>
 }
