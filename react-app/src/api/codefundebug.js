@@ -8,6 +8,9 @@ function getDebugProblem (debugProblemId)
         type: 'GET',
         url: 'https://debug.codefun.vn/api/problems/' + debugProblemId,
         async: false ,
+        headers: {
+            Authorization: 'Bearer ' + getCookie('auth'),  
+        },
         success(data,status){
             console.log('Get problem infor status: ' + status ) ;
             return_data = data;
