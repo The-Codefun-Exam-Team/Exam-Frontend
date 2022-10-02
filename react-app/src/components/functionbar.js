@@ -133,15 +133,28 @@ function FunctionBar (props)
     </div>
 }
 
-function BugDisplay ()
+function Verdict (props)
+{
+    let returnvalue = <></>
+    if (props.cnt!==0)
+    {
+
+        returnvalue = <li>{props.verdictname}: x{props.cnt}</li>
+    }
+    return returnvalue
+}
+
+function BugDisplay (props)
 {
 
     const mystyle = {
         margin: '0px',
     }
+    
     return <ul style={mystyle}>
-        <li>WA: x2</li>
-        <li>RTE: x1</li>
+        <Verdict verdictname='WA' cnt={props.cntWA}/>
+        <Verdict verdictname='TLE' cnt={props.cntTLE}/>
+        <Verdict verdictname='RTE' cnt={props.cntRTE}/>
     </ul>
 }
 
@@ -171,7 +184,28 @@ function ProblemInfoTable(props)
     const {debugProblemId} = useParams()
     const problemId = props.data.problem.code
     const url = 'https://codefun.vn/problems/' + problemId;
+    var cntWA = 0 
+    var cntRTE = 0 
+    var cntTLE = 0 
+    console.log(props.data.judge.tests)
+    const testdata = props.data.judge.tests
+    for ( let i = 0 ; i < props.data.judge.total ; i ++ )
+    {
+        if ( testdata[i].verdict === 'WA' )
+        {
+            cntWA ++ 
+        }
+        if ( testdata[i].verdict === 'RTE' )
+        {
+            cntRTE ++ 
+        }
+        if ( testdata[i].verdict === 'TLE' )
+        {
+            cntTLE ++ 
+        }
 
+    }
+    
     
     
     return <>
@@ -180,7 +214,7 @@ function ProblemInfoTable(props)
         <Table style={tableStyle} borderless={true}>
             <thead>
                 <tr>
-                    <th colSpan={2}><div style={scoreStyle}>Highest score: {props.data.score}</div></th>
+                    <th colSpan={2}><div style={scoreStyle}>Highest score: {props.data.best_score}</div></th>
                 </tr>
             </thead>
             <tbody style={{backgroundColor:`${colors[4]}`}}>
@@ -202,7 +236,7 @@ function ProblemInfoTable(props)
                 </tr>
                 <tr>
                     <th style={{borderBottom: '0px red solid',borderRight:`${colors[5]} solid 2px`}}>Bugs</th>
-                    <th style={{borderBottom: '0px red solid',outlineRight:`${colors[5]} solid 2px`,outlineLeft:`${colors[5]} solid 2px`}}><BugDisplay /></th>
+                    <th style={{borderBottom: '0px red solid',outlineRight:`${colors[5]} solid 2px`,outlineLeft:`${colors[5]} solid 2px`}}><BugDisplay cntRTE={cntRTE} cntWA={cntWA} cntTLE={cntTLE}/></th>
                 </tr>
             </tbody>
         </Table>
