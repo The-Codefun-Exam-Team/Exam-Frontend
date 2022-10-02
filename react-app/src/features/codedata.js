@@ -4,7 +4,7 @@ export const codeSlice = createSlice({
     name: 'code',
     initialState: {
         usercode: {payload:""},
-        realcode: {payload:""}
+        realcode: {payload:""},
     },
     reducers: {
         update_usercode: (state,n_usercode) => {

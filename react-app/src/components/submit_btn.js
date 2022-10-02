@@ -8,7 +8,7 @@ function SubmitBtn (props)
     const mystyle = {
         margin: 'auto',
         display: 'block',
-        marginTop: '20px',
+        marginTop: '30px',
         backgroundColor: `${colors[4]}`,
         color: `${colors[0]}`,
         borderRadius: '5px',
