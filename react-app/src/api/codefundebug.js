@@ -14,6 +14,7 @@ function getDebugProblem (debugProblemId)
         success(data,status){
             console.log('Get problem infor status: ' + status ) ;
             return_data = data;
+            console.log(data)
         },
 
         timeout: 5000
