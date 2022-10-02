@@ -150,11 +150,15 @@ function BugDisplay (props)
     const mystyle = {
         margin: '0px',
     }
-    
+    if ( props.cntCE === 1 )
+    {
+        return <div style={mystyle}>CE</div>
+    }
     return <ul style={mystyle}>
         <Verdict verdictname='WA' cnt={props.cntWA}/>
         <Verdict verdictname='TLE' cnt={props.cntTLE}/>
         <Verdict verdictname='RTE' cnt={props.cntRTE}/>
+        <Verdict verdictname='CE' cnt={props.cntCE}/>
     </ul>
 }
 
@@ -187,8 +191,13 @@ function ProblemInfoTable(props)
     var cntWA = 0 
     var cntRTE = 0 
     var cntTLE = 0 
+    var cntCE = 0 
     console.log(props.data.judge.tests)
     const testdata = props.data.judge.tests
+    if ( props.data.judge.total === 0 )
+    {
+        cntCE ++ 
+    }
     for ( let i = 0 ; i < props.data.judge.total ; i ++ )
     {
         if ( testdata[i].verdict === 'WA' )
@@ -203,6 +212,7 @@ function ProblemInfoTable(props)
         {
             cntTLE ++ 
         }
+        
 
     }
     
@@ -236,7 +246,7 @@ function ProblemInfoTable(props)
                 </tr>
                 <tr>
                     <th style={{borderBottom: '0px red solid',borderRight:`${colors[5]} solid 2px`}}>Bugs</th>
-                    <th style={{borderBottom: '0px red solid',outlineRight:`${colors[5]} solid 2px`,outlineLeft:`${colors[5]} solid 2px`}}><BugDisplay cntRTE={cntRTE} cntWA={cntWA} cntTLE={cntTLE}/></th>
+                    <th style={{borderBottom: '0px red solid',outlineRight:`${colors[5]} solid 2px`,outlineLeft:`${colors[5]} solid 2px`}}><BugDisplay cntRTE={cntRTE} cntWA={cntWA} cntCE={cntCE} cntTLE={cntTLE}/></th>
                 </tr>
             </tbody>
         </Table>
