@@ -28,27 +28,6 @@ function SubInfo()
     }
 
 
-
-    function getVerdict ()
-    {
-        if ( data.edit_result === 'SS' )
-        {
-            return "Partially Accepted"
-        }
-        if ( data.edit_result === 'Q' )
-        {
-            return "In queue"
-        }
-        if ( data.edit_result === 'AC' )
-        {
-            return "Accepted"
-        }
-        if ( data.edit_result === 'WA' )
-        {
-            return "Wrong Answer" 
-        }
-
-    }
     
 
     
