@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "ace-builds": "^1.10.1",
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
