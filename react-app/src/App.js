@@ -4,6 +4,7 @@ import ContestPage from './pages/contest';
 import ProblemPage from './pages/problem';
 import SubmissionPage from './pages/submission'
 import RankingPage from './pages/ranking';
+import NotFoundPages from './pages/notfoundpage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AboutPage } from './pages/about';
 
@@ -12,16 +13,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/'>
-          <Route index element={<HomePage />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='contest/:contestId' element={<ContestPage />} />
-          <Route path='problem/:debugProblemId' element={<ProblemPage />} /> 
-          <Route path='submission/:debugSubmissionId' element={<SubmissionPage />} />
-          <Route path='ranking/all' element={<RankingPage />} />
-          <Route path='about' element={<AboutPage />} />
+        
+         
 
-        </Route>
+        <Route index element={<HomePage />} />
+        <Route path='login' element={<LoginPage />} />
+        <Route path='contest/:contestId' element={<ContestPage />} />
+        <Route path='problem/:debugProblemId' element={<ProblemPage />} /> 
+        <Route path='submission/:debugSubmissionId' element={<SubmissionPage />} />
+        <Route path='ranking/all' element={<RankingPage />} />
+        <Route path='about' element={<AboutPage />} />
+        <Route path='*' element={<NotFoundPages /> } />
+          
+          
 
       </Routes>
     </BrowserRouter>
