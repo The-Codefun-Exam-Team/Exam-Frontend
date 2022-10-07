@@ -9,6 +9,13 @@ body {
 #root
 {
   font-family: 'MuseoModerno', cursive ;
+  --blue-0:#ffffff ;
+  --blue-1:#b3cde0;
+  --blue-2:#6497b1;
+  --blue-3:#005b96;
+  --blue-4:#03396c;
+  --blue-5:#011f4b;
+  --blue-6:#000000;
   
 }
 
@@ -20,3 +27,18 @@ code {
 .navbar-dark .navbar-toggler-icon {
   background-image: url("./drop-down-menu.png");
   }
+
+.pagination {
+  --bs-pagination-color: var(--blue-0);
+  --bs-pagination-bg: var(--blue-4);
+  --bs-pagination-hover-bg:var(--blue-2);
+  --bs-pagination-focus-bg:var(--blue-4);
+  --bs-pagination-hover-color:var(--blue-0) ;
+  --bs-pagination-focus-box-shadow: 0 0 0 0 0 ;
+  --bs-pagination-focus-color:var(--blue-0) ;
+  --bs-pagination-active-bg:var(--blue-3) ;
+  --bs-pagination-active-border-color:var(--blue-3); 
+  --bs-pagination-disabled-color:var(--blue-0);
+  --bs-pagination-disabled-bg:var(--blue-4); 
+}
+

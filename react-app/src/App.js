@@ -21,7 +21,7 @@ function App() {
         <Route path='contest/:contestId' element={<ContestPage />} />
         <Route path='problem/:debugProblemId' element={<ProblemPage />} /> 
         <Route path='submission/:debugSubmissionId' element={<SubmissionPage />} />
-        <Route path='ranking/all' element={<RankingPage />} />
+        <Route path='ranking/:param' element={<RankingPage />} />
         <Route path='about' element={<AboutPage />} />
         <Route path='*' element={<NotFoundPages /> } />
           

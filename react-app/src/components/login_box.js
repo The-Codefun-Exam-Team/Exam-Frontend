@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import colors from '../config/color.ts';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { login } from '../api/codefunvn';
 import { useSelector, useDispatch } from 'react-redux' ;
 import {update_password,update_username} from '../features/logindata.js'
@@ -10,6 +10,8 @@ function Inputbox (props)
 {
     const dispatch = useDispatch()
 
+
+    
     const inputboxstyle = {
         margin: '26px 30px 0px 30px',
         backgroundColor:'transparent',
@@ -21,6 +23,7 @@ function Inputbox (props)
         paddingLeft: '10px',
         paddingRight: '5px',
     }
+
 
 
     function focusinevent (event)
@@ -52,7 +55,7 @@ function Inputbox (props)
     
     return(
         <>
-            <input placeholder={props.placeholder} onChange={_onChange} maxLength={props.maxlength} style={inputboxstyle} type={props.mytype} onFocus={focusinevent} onBlur={focusoutevent}/>
+            <input  placeholder={props.placeholder} onChange={_onChange} maxLength={props.maxlength} style={inputboxstyle} type={props.mytype} onFocus={focusinevent} onBlur={focusoutevent}/>
         </>
     )
 
@@ -117,7 +120,7 @@ function LoginBox ()
     const titlestyle = {
         padding:'10px 15px 2px 15px',
         fontSize:'x-large',
-        backgroundColor:`${colors[3]}`,
+        backgroundColor:`${colors[4]}`,
         borderRadius:'15px 15px 0px 0px',
         marginBottom:'0px',
         color:`${colors[0]}`,
@@ -129,7 +132,7 @@ function LoginBox ()
         color:'gray',
         paddingLeft:'15px',
         paddingBottom: '8px',
-        backgroundColor:`${colors[3]}`,
+        backgroundColor:`${colors[4]}`,
         marginTop:'0px',
         fontSize:'medium',
         borderWidth:'0px',
@@ -139,7 +142,7 @@ function LoginBox ()
         position: 'relative',
         top: -1 ,
         left:-1,
-        backgroundColor: `${colors[3]}`,
+        backgroundColor: `${colors[4]}`,
         borderRadius: '4px',
         width: '558px' ,
     }
