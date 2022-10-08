@@ -17,7 +17,7 @@ function Navigationbar()
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <NavbarBtn name="Ranking" url="/ranking/group=0&page=1"/>
+              <NavbarBtn name="Ranking" url="/ranking/all?group=0&page=1"/>
               <NavbarBtn name="Problems" url="/contest/demo"/>
               <NavbarBtn name="Submissions" url="/submissions"/>
               <NavbarBtn name="About" url="/about"/>
