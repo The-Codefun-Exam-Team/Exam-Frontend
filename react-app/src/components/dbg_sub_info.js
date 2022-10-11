@@ -23,7 +23,7 @@ function SubInfo()
     if ( data.edit_result === 'Q' )
     {
         
-        setTimeout(()=>resetdata(getSubmission(debugSubmissionId)),5000)
+        setTimeout(()=>resetdata(getSubmission(debugSubmissionId)),1000)
         
     }
 
@@ -31,19 +31,19 @@ function SubInfo()
 
     function getVerdict ()
     {
-        if ( data.edit_result === 'SS' )
+        if ( data.result === 'SS' )
         {
             return "Partially Accepted"
         }
-        if ( data.edit_result === 'Q' )
+        if ( data.result === 'Q' )
         {
             return "In queue"
         }
-        if ( data.edit_result === 'AC' )
+        if ( data.result === 'AC' )
         {
             return "Accepted"
         }
-        if ( data.edit_result === 'WA' )
+        if ( data.result === 'WA' )
         {
             return "Wrong Answer" 
         }
@@ -69,6 +69,10 @@ function SubInfo()
                 <tr>
                     <td>Run id:</td>
                     <td><a target='_blank' rel='noreferrer' href={`https://codefun.vn/submissions/${data.codefun_id}`}>{data.codefun_id}</a></td>
+                </tr>
+                <tr>
+                    <td>Verdict:</td>
+                    <td>{getVerdict()}</td>
                 </tr>
                 <tr style={{borderBottom: '0px red solid'}}>
                     <td style={{borderBottom: '0px red solid'}}>Debug score:</td>
