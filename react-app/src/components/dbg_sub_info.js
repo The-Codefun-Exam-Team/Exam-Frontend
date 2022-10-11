@@ -51,7 +51,7 @@ function SubInfo()
                 </tr>
                 <tr style={{borderBottom: '0px red solid'}}>
                     <td style={{borderBottom: '0px red solid'}}>Debug score:</td>
-                    <td style={{borderBottom: '0px red solid'}}>{data.edit_score}</td>
+                    <td style={{borderBottom: '0px red solid'}}>{data.edit_result}</td>
                 </tr>
             </tbody>
 
