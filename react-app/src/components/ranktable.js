@@ -75,7 +75,7 @@ function RankTable ()
         return <tr key={index}>
             <td style={(index===response.length-1 ? rmborder : {})}>{index+1+(page-1)*50}</td>
             <td style={(index===response.length-1 ? rmborder : {})}>{val.username}</td>
-            <td style={(index===response.length-1 ? rmborder : {})}>{val.name.slice(0,18)+((val.name.length>18) ? "..." : "")}</td>
+            <td style={(index===response.length-1 ? rmborder : {})}>{val.name.slice(0,25)+((val.name.length>25) ? "..." : "")}</td>
             <td style={(index===response.length-1 ? rmborder : {})}>{Math.round(val.points*100)/100}</td>
             <td style={(index===response.length-1 ? rmborder : {})}>{val.rank}</td>
         </tr>
