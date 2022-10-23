@@ -35,6 +35,6 @@ RUN find build/
 RUN npm install -g serve
 
 # Expose HTTP port
-EXPOSE 8008
+EXPOSE 80
 
 ENTRYPOINT ["serve", "-s", "build", "-p", "80"]
