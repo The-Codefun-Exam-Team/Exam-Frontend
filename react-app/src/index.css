@@ -3,12 +3,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'MuseoModerno', cursive ;
+  /* font-family: 'MuseoModerno', cursive ; */
 }
 
 #root
 {
-  font-family: 'MuseoModerno', cursive ;
+  /* font-family: 'MuseoModerno', cursive ; */
   --blue-0:#ffffff ;
   --blue-1:#b3cde0;
   --blue-2:#6497b1;
@@ -40,5 +40,56 @@ code {
   --bs-pagination-active-border-color:var(--blue-3); 
   --bs-pagination-disabled-color:var(--blue-0);
   --bs-pagination-disabled-bg:var(--blue-4); 
+
 }
 
+.btn-primary {
+  --bs-btn-bg:var(--blue-4);
+  --bs-btn-border-color:var(--blue-4);
+  --bs-btn-hover-bg:var(--blue-4);
+  --bs-btn-active-shadow: none;
+  --bs-btn-focus-box-shadow: none;
+  --bs-btn-hover-border-color:var(--blue-4);
+  --bs-btn-active-bg:var(--blue-4);
+  --bs-btn-active-border-color:var(--blue-4);
+}
+
+
+
+.dropdown-menu {
+  transition: opacity 0.15s ease-out;
+  opacity: 0;
+  --bs-dropdown-link-active-bg: var(--blue-2);
+  --bs-dropdown-link-color:var(--blue-0);
+  --bs-dropdown-link-hover-bg:var(--blue-3);
+  --bs-dropdown-link-hover-color:var(--blue-0);
+  display: none!important;
+} 
+
+.dropdown-item:focus {
+  background-color: var(--blue-2) ;
+}
+.dropdown-menu.show {
+  display: flex!important;
+  opacity: 1;
+}
+
+/* width */
+.dropdown-menu::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #b3cde0;
+}
+
+/* Handle */
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: #005b96;
+}
+
+/* Handle on hover */
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #03396c;
+}

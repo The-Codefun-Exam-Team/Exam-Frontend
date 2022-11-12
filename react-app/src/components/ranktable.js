@@ -1,18 +1,16 @@
 import colors from '../config/color.ts'
 import axios from 'axios'
-import { useEffect , useState , useCallback} from 'react';
+import { useEffect , useState , useCallback, useMemo} from 'react';
 import Table from 'react-bootstrap/Table'
-import { getCookie } from '../api/cookie';
-import { useSearchParams , useParams, useNavigate, useLocation} from 'react-router-dom';
-import Pagination from 'react-bootstrap/Pagination'
-import Stack from 'react-bootstrap/Stack'
-import {Navigate} from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const useAxios = ({ url, method, body = null, headers = null}) => {
     const [response, setResponse] = useState(null);
     const [error, setError] = useState('');
     const [loading, setloading] = useState(true);
-    const location = useLocation()
 
     const fetchData = useCallback(() => {
         axios[method](url, JSON.parse(headers), JSON.parse(body))
@@ -31,22 +29,23 @@ const useAxios = ({ url, method, body = null, headers = null}) => {
 
     useEffect(() => {
         fetchData();
-    }, [method, url, body, headers, fetchData,location]);
+        window.scroll(0,0)
+    }, [method, url, body, headers, fetchData]);
 
     return { response, error, loading };
 };
 
 function RankTable ()
 {
+    // eslint-disable-next-line no-unused-vars
     const [queryparam,setqueryparam] = useSearchParams();
-    const location = useLocation()
     const group = queryparam.get("group")
     const page = queryparam.get("page")
     
-    
+    // eslint-disable-next-line no-unused-vars
     const {response,error,loading} = useAxios(
         {
-            url:`https://debug.codefun.vn/dev/api/rankings?group=${group}&pageid=${page}&limit=${50}`,
+            url:`https://debug.codefun.vn/api/rankings?group=${group}&pageid=${page}&limit=${50}`,
             method:'get',
             // headers: JSON.stringify({
             //     Authorization: 'Bearer ' + getCookie('auth') 
@@ -64,13 +63,13 @@ function RankTable ()
 
     if ( loading )
     {
-        return <div></div>
+        return <></>
     }
 
     const rmborder = {
         borderBottom: 'solid 0px white'
     }
-    
+
     const handledResponse = (response!==null) ? response.map(function(val,index){
         return <tr key={index}>
             <td style={(index===response.length-1 ? rmborder : {})}>{index+1+(page-1)*50}</td>
@@ -86,7 +85,6 @@ function RankTable ()
         backgroundColor: `${colors[4]}`,
         borderColor: `${colors[5]}`,
         color: `${colors[0]}`,
-        marginTop: '45px',
         borderRadius: '5px',
         
 
@@ -115,48 +113,123 @@ function PaginationRanking()
 {
     
     const [queryparam,setqueryparam] = useSearchParams()
-    const navigate = useNavigate()
-    var page = Number(queryparam.get("page"))
-    var lastpage = 20
-    var group = queryparam.get('group')
-    const __onClick = (pagenum,e) =>
+    
+    const page = Number(queryparam.get("page"))
+    const group = queryparam.get('group')
+
+    const __onClick = useCallback((pagenum) =>
     {
-        e.target.blur()
-        if ( pagenum === 0 || pagenum === lastpage+1 || pagenum === page)
+        if ( pagenum === 0 || pagenum === page)
         {
             return
         }
         setqueryparam({page:pagenum,group:group},{replace:true})
         
+    },[group,page,setqueryparam])
+
+    const buttonStyle = {
+        fontSize: '18px',
+        color: 'white',
+        margin: '5px 0px 0px 0px',
+        backgroundColor: `${colors[4]}`,
+        border: 'none',
+        padding: '4px 6px',
+        borderRadius: '5px'
     }
 
-
-
     return<>
-    <Stack direction="horizontal">
-        <Pagination bsPrefix="pagination" className="mx-auto">
-            <Pagination.First  onClick={(e)=>__onClick(1,e)} />
-            <Pagination.Prev onClick={(e)=>__onClick(page-1,e)}/>
-            {(page-5>0) ? <Pagination.Item onClick={(e)=>__onClick(page-5,e)}>{page-5}</Pagination.Item> : <></>}
-            {(page===4||page===5) ? <Pagination.Item onClick={(e)=>__onClick(1,e)}>1</Pagination.Item> : <></>}
-            {(page===5) ? <Pagination.Item onClick={(e)=>__onClick(2,e)}>2</Pagination.Item> : <></>}
-            {(page>=5) ? <Pagination.Ellipsis disabled/> : <></>}
-
-            {(page-2>0) ? <Pagination.Item onClick={(e)=>__onClick(page-2,e)}>{page-2}</Pagination.Item> : <></>}
-            {(page-1>0) ? <Pagination.Item onClick={(e)=>__onClick(page-1,e)}>{page-1}</Pagination.Item> : <></>}
-            <Pagination.Item active>{page}</Pagination.Item>
-            {(page+1<=lastpage) ? <Pagination.Item onClick={(e)=>__onClick(page+1,e)}>{page+1}</Pagination.Item> : <></>}
-            {(page+2<=lastpage) ? <Pagination.Item onClick={(e)=>__onClick(page+2,e)}>{page+2}</Pagination.Item> : <></>}
-
-            {(page<=lastpage-4) ? <Pagination.Ellipsis disabled /> : <></>}
-            {(page+4<lastpage) ? <Pagination.Item onClick={(e)=>__onClick(page+4,e)}>{page+4}</Pagination.Item> : <></>}
-            {(page===lastpage-4) ? <Pagination.Item onClick={(e)=>__onClick(lastpage-1,e)}>{lastpage-1}</Pagination.Item> : <></>}
-            {(page===lastpage-4||page===lastpage-3) ? <Pagination.Item onClick={(e)=>__onClick(lastpage,e)}>{lastpage}</Pagination.Item> : <></>}
-            <Pagination.Next onClick={(e)=>__onClick(page+1,e)} />
-            <Pagination.Last onClick={(e)=>__onClick(lastpage,e)} />
-        </Pagination>
-    </Stack>
+        
+        <div className='d-flex justify-content-between'>
+            <button style={buttonStyle} onClick={()=>__onClick(page-1)}>
+                Previous page
+            </button>
+            <button style={buttonStyle} onClick={()=>__onClick(page+1)} >
+                Next page
+            </button>
+        </div>
     </>
 }
 
-export {RankTable,PaginationRanking}
+function GroupOptions ()
+{
+    // eslint-disable-next-line no-unused-vars
+    const {response,error,loading} = useAxios({
+        url: 'https://codefun.vn/api/groups',
+        method: 'get',
+    })
+    
+    const [queryparam,setqueryparam] = useSearchParams()
+    // eslint-disable-next-line no-unused-vars
+    const page = Number(queryparam.get("page"))
+    const group = queryparam.get('group')
+    
+    const getName = useCallback(()=>{
+        var low = 0 
+        var hi = response.data.length
+
+        while(low<hi-1){
+            var mid = Math.round((low+hi)/2-0.5)
+            if ( Number(group) >= Number(response.data[mid].id) )
+            {
+                low = mid 
+            }
+            else
+            {
+                hi = mid 
+            }
+        }
+        return response.data[low].name 
+    },[response,group])
+
+
+
+    const responseList = useMemo(()=>{
+        if ( loading ) return <></>
+        var x = [...response.data]
+        x.push({name:"Global",id:0})
+        return x.map(item=>{
+            return <Dropdown.Item onClick={()=>{setqueryparam({page:1,group:item.id},{replace:true})}} key={item.id}>
+                {item.name}
+            </Dropdown.Item>
+            }
+        ).reverse()
+    },[response,loading,setqueryparam])
+    
+    if ( loading ) {
+        return <></>
+    }
+    
+    const ctnStyle = {
+        marginBottom: '10px',
+        marginTop:'25px',
+        
+
+    }
+
+
+    return (
+        <>
+            <div className='d-flex justify-content-center' style={ctnStyle} >
+                <Dropdown style={{width:'100%'}} as={ButtonGroup} >
+                    <div  style={{width:"100%",backgroundColor:`${colors[4]}`,borderRadius:'5px'}}>
+                        <div className='d-flex justify-content-between'>
+                            <div></div>
+                            <Button style={{fontSize:'20px'}}>{(group==="0") ? "Global": getName()}</Button>
+                            <Dropdown.Toggle split id="dropdown-custom-1" style={{borderLeft:'2px solid white',borderRadius:'0px 5px 5px 0px',width:'40px'} }></Dropdown.Toggle>
+                        </div>
+                        
+                    </div>
+                    
+                    <Dropdown.Menu  className='d-flex flex-column' style={{width:'100%',backgroundColor:`${colors[2]}`,display:'inherit',height:'400px',overflowY:'auto'}}>
+                        {responseList}
+                    </Dropdown.Menu>
+                    
+                    
+                </Dropdown>
+            </div>
+        </>
+    )
+} 
+
+
+export {RankTable,PaginationRanking,GroupOptions}
