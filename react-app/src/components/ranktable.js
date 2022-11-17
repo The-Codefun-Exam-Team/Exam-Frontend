@@ -91,7 +91,7 @@ function RankTable ()
     }
     
     return (
-        <Table style={tableStyle}>
+        <Table style={tableStyle} responsive="md">
             <thead>
                 <tr>
                     <th>#</th>
