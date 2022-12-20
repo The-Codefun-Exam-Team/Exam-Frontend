@@ -21,7 +21,7 @@ function Navigationbar()
               <NavbarBtn name="Submissions" url="/submissions"/>
               <NavbarBtn name="Ranking" url="/ranking/all?group=0&page=1"/>
               <NavbarBtn name="About" url="/about"/>
-              <AccBtn />
+              
               <LogoutBtn /> 
             </Nav>
           </Navbar.Collapse>

@@ -72,11 +72,9 @@ function RankTable ()
 
     const handledResponse = (response!==null) ? response.map(function(val,index){
         return <tr key={index}>
-            <td style={(index===response.length-1 ? rmborder : {})}>{index+1+(page-1)*50}</td>
-            <td style={(index===response.length-1 ? rmborder : {})}>{val.username}</td>
+            <td style={(index===response.length-1 ? rmborder : {})}>{val.rank}</td>
             <td style={(index===response.length-1 ? rmborder : {})}>{val.name.slice(0,25)+((val.name.length>25) ? "..." : "")}</td>
             <td style={(index===response.length-1 ? rmborder : {})}>{Math.round(val.points*100)/100}</td>
-            <td style={(index===response.length-1 ? rmborder : {})}>{val.rank}</td>
         </tr>
         
     }) : [<tr key={0}><td colSpan={5} style={{textAlign:'center',...rmborder}}>End of user list</td></tr>]
@@ -95,10 +93,8 @@ function RankTable ()
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Username</th>
                     <th>Name</th>
                     <th>Points</th>
-                    <th>Ranking</th>
                 </tr>
             </thead>
             <tbody>
