@@ -10,11 +10,11 @@ WORKDIR /app
 
 # Download dependencies
 # ENV NODE_ENV=production
-COPY package.json package-lock.json ./
+COPY react-app/package.json react-app/package-lock.json ./
 RUN npm install
 
 # Build
-COPY . .
+COPY react-app/ .
 RUN npm run build
 
 ### STAGE 2: Run the server ###
