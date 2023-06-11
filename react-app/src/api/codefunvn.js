@@ -8,6 +8,9 @@ function login ( dt_username , dt_password )
         type:'POST',
         url: 'https://codefun.vn/api/auth',
         contentType: 'application/x-www-form-urlencoded; encode=gzip',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
         data: {
             username: dt_username,
             password: dt_password,
